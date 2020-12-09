@@ -1,27 +1,42 @@
-import React, { useMemo, useState } from 'react';
+import 'fontsource-roboto'
 import './App.css';
-import getTimecodeCalculator from './engine/timecodeCalculator'
+import React, { } from 'react';
+import { TimeCodeCalculatorPanel } from './components/TimeCodeCalculatorPanel';
+import { AppBar, Button, Container, createMuiTheme, createStyles, Grid, Icon, makeStyles, Theme, ThemeProvider, Toolbar } from '@material-ui/core';
+
+
+const useStyles = makeStyles((theme: Theme) => createStyles({
+  header: {
+    display: 'inline'
+  }
+}));
+
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#0f0f0f'
+    }
+  }
+})
 
 const App: React.FC = () => {
-
-  const [framesPerSecond, setFramesPerSecond] = useState(24);
-  const [first, setfirst] = useState('')
-  const [second, setSecond] = useState('')
-
-  const calculator = useMemo(() => getTimecodeCalculator(framesPerSecond), [framesPerSecond]);
+  const classes = useStyles();
 
   return (
-    <div>
-      <select onChange={(event) => setFramesPerSecond(parseInt(event.target.value))} value={framesPerSecond}>
-        <option value='24'>24</option>
-        <option value='30'>30</option>
-        <option value='60'>60</option>
-      </select>
-      <input type='text' value={first} onChange={(event) => setfirst(event.currentTarget.value)} />
-      <input type='text' value={second} onChange={(event) => setSecond(event.currentTarget.value)} />
-      {calculator.validateTimestamp(first) && calculator.validateTimestamp(second) &&
-        calculator.getTimeStampDifference(first, second)}
-    </div >
+    <ThemeProvider theme={theme}>
+      <AppBar position='static'>
+        <Toolbar>
+          <Grid container justify='center'>
+            <Grid item>
+              <h2 className={classes.header}>TimeCodeR</h2>
+              <span>{'\u2122'}</span>
+            </Grid>
+          </Grid>
+        </Toolbar>
+      </AppBar>
+      <TimeCodeCalculatorPanel />
+    </ThemeProvider>
   );
 }
 
