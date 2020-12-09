@@ -21,6 +21,7 @@ export const TimeCodeCalculatorPanel = () => {
 
     return <Grid container direction='column' justify='center' alignItems='center'>
         <Grid item>
+            <span>Frames per second: </span>
             <Select onChange={(event) => setFramesPerSecond(event.target.value as number)} value={framesPerSecond}>
                 <MenuItem value={24}>24</MenuItem>
                 <MenuItem value={30}>30</MenuItem>
@@ -33,6 +34,8 @@ export const TimeCodeCalculatorPanel = () => {
         <Grid item>
             <TimecodeInput value={compare} onChange={onCompareInputChanged} />
         </Grid>
-        {calculator.getTimeStampDifference(base, compare)}
+        <Grid item>
+            {calculator.getTimeStampDifference(base, compare)}
+        </Grid>
     </Grid>
 }
