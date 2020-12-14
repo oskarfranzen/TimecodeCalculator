@@ -5,7 +5,9 @@ import { TimecodeInput } from './TimeCodeInput'
 import { Grid, MenuItem, Select } from '@material-ui/core';
 
 export const TimeCodeCalculatorPanel = () => {
-    const [framesPerSecond, setFramesPerSecond] = useState(24);
+    const framesPerSecondOptions = [25, 30, 60];
+
+    const [framesPerSecond, setFramesPerSecond] = useState(framesPerSecondOptions[0]);
     const [base, setBaseInput] = useState({} as TimeCode)
     const [compare, setCompareInput] = useState({} as TimeCode)
 
@@ -23,9 +25,7 @@ export const TimeCodeCalculatorPanel = () => {
         <Grid item>
             <span>Frames per second: </span>
             <Select onChange={(event) => setFramesPerSecond(event.target.value as number)} value={framesPerSecond}>
-                <MenuItem value={24}>24</MenuItem>
-                <MenuItem value={30}>30</MenuItem>
-                <MenuItem value={60}>60</MenuItem>
+                {framesPerSecondOptions.map(fps => <MenuItem value={fps}>{fps}</MenuItem>)}
             </Select>
         </Grid>
         <Grid item>

@@ -1,6 +1,6 @@
 
 import React from 'react'
-import { AppBar, Box, Button, createMuiTheme, createStyles, Grid, Icon, makeStyles, Paper, Table, TableRow, Theme, ThemeProvider, Toolbar, TableCell, Typography } from '@material-ui/core';
+import { AppBar, Box, Button, createMuiTheme, createStyles, Grid, Icon, makeStyles, Paper, Table, TableRow, Theme, ThemeProvider, Toolbar, TableCell, Typography, TableCellProps } from '@material-ui/core';
 import { Link, RouteComponentProps } from 'react-router-dom';
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
@@ -14,31 +14,33 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         textTransform: 'none',
         fontWeight: 'bolder',
         '&:hover': {
-            opacity: '0.4'
+            opacity: '0.8'
         }
-    } 
+    }
 }));
 
 export const AppToolBar: React.FC<RouteComponentProps> = ({ location }) => {
     const classes = useStyles();
 
+    const InvisibleCell: React.FC<Partial<TableCellProps>> = (props) => <TableCell className={classes.noBorder} {...props} />
+
     return <AppBar position='static'>
         <Toolbar>
             <Table>
                 <TableRow>
-                    <TableCell className={classes.noBorder} width='25%' />
-                    <TableCell className={classes.noBorder} width='50%' align='center'>
+                    <InvisibleCell width='25%' />
+                    <InvisibleCell width='50%' align='center'>
                         <Button className={classes.headerText} color='inherit' component={Link} to='/'>
                             <span>TimeCodeR</span>
                         </Button>
-                    </TableCell>
-                    <TableCell className={classes.noBorder} width='25%' align='right'>
+                    </InvisibleCell>
+                    <InvisibleCell width='25%' align='right'>
                         <Button className={classes.headerText} component={Link} to='/about'>
                             <span >
                                 About
                             </span>
                         </Button>
-                    </TableCell>
+                    </ InvisibleCell>
                 </TableRow>
             </Table>
         </Toolbar>

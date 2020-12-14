@@ -1,5 +1,5 @@
 import React from "react"
-import { TimeCode as TimeCode } from "../engine/timecodeConstants";
+import { TimeCode } from "../engine/timecodeConstants";
 
 interface TimeCodeInput {
     value: TimeCode

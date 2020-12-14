@@ -15,12 +15,8 @@ const App: React.FC = () => {
     <ThemeProvider theme={Theme}>
       <RouterToolbar />
       <Switch>
-        <Route exact path='/'>
-          <CalculatorPage />
-        </Route>
-        <Route exact path='/about'>
-          <AboutPage />
-        </Route>
+        <Route exact path='/' component={CalculatorPage} />
+        <Route exact path='/about' component={AboutPage} />
       </Switch>
     </ThemeProvider >
   );
