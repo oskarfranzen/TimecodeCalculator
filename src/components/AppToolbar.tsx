@@ -1,6 +1,6 @@
 
 import React from 'react'
-import { AppBar, Box, Button, createMuiTheme, createStyles, Grid, Icon, makeStyles, Paper, Table, TableRow, Theme, ThemeProvider, Toolbar, TableCell, Typography, TableCellProps } from '@material-ui/core';
+import { AppBar, Button, createStyles, makeStyles, Table, TableRow, Theme, Toolbar, TableCell, TableCellProps } from '@material-ui/core';
 import { Link, RouteComponentProps } from 'react-router-dom';
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
     }
 }));
 
-export const AppToolBar: React.FC<RouteComponentProps> = ({ location }) => {
+export const AppToolBar: React.FC<RouteComponentProps> = () => {
     const classes = useStyles();
 
     const InvisibleCell: React.FC<Partial<TableCellProps>> = (props) => <TableCell className={classes.noBorder} {...props} />

@@ -1,7 +1,7 @@
 import 'fontsource-roboto'
 import './App.css';
 import React, { } from 'react';
-import { createMuiTheme, ThemeProvider } from '@material-ui/core';
+import { ThemeProvider } from '@material-ui/core';
 import { CalculatorPage } from './pages/CalculatorPage';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import { AboutPage } from './pages/AboutPage';

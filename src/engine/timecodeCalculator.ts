@@ -1,7 +1,7 @@
 import { TimeCode } from './timecodeConstants'
 
 
-export default (framesPerSecond: number) => {
+const timeCodeCalculator = (framesPerSecond: number) => {
     const framesPerMinute = framesPerSecond * 60;
     const framesPerHour = framesPerMinute * 60;
 
@@ -44,13 +44,13 @@ export default (framesPerSecond: number) => {
         return { h, m, s, f: remain }
     }
 
-    const getTimeStampDifferenceString = (inputFirst: string, inputSecond: string) => {
-        const frameDiff = Math.abs(getTotalFramesFromString(inputFirst) - getTotalFramesFromString(inputSecond));
+    // const getTimeStampDifferenceString = (inputFirst: string, inputSecond: string) => {
+    //     const frameDiff = Math.abs(getTotalFramesFromString(inputFirst) - getTotalFramesFromString(inputSecond));
 
-        const { h, m, s, f } = getTimestampParts(frameDiff);
+    //     const { h, m, s, f } = getTimestampParts(frameDiff);
 
-        return `${h.toString().padStart(2, '0')};${m.toString().padStart(2, '0')};${s.toString().padStart(2, '0')};${f.toString().padStart(2, '0')}`;
-    }
+    //     return `${h.toString().padStart(2, '0')};${m.toString().padStart(2, '0')};${s.toString().padStart(2, '0')};${f.toString().padStart(2, '0')}`;
+    // }
 
     const getTimeStampDifference = (inputFirst: TimeCode, inputSecond: TimeCode) => {
         const frameDiff = Math.abs(getTotalFrames(inputFirst) - getTotalFrames(inputSecond));
@@ -62,3 +62,5 @@ export default (framesPerSecond: number) => {
 
     return { getTimeStampDifference, validateTimesCodeString }
 }
+
+export default timeCodeCalculator
