@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         border: 'none'
     },
     headerText: {
-        color: 'inherit',
+        color: 'white',
         display: 'inline',
         fontSize: theme.typography.h6.fontSize,
         textTransform: 'none',
@@ -31,15 +31,15 @@ export const AppToolBar: React.FC<RouteComponentProps> = () => {
                     <TableRow>
                         <InvisibleCell width='25%' />
                         <InvisibleCell width='50%' align='center'>
-                            <Button className={classes.headerText} color='inherit' component={Link} to='/'>
+                            <Button className={classes.headerText} component={Link} to='/'>
                                 <span>TimeCodeR</span>
                             </Button>
                         </InvisibleCell>
                         <InvisibleCell width='25%' align='right'>
                             <Button className={classes.headerText} component={Link} to='/about'>
-                                <span >
+                                <span>
                                     About
-                            </span>
+                                </span>
                             </Button>
                         </ InvisibleCell>
                     </TableRow>
