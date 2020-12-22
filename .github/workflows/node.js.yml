@@ -35,7 +35,4 @@ jobs:
     
     - name: Test application
       run: npm test
-
-    - name: test secret
-      run: echo ${{ secrets.TEST_SECRET }}
     
