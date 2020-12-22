@@ -1,6 +1,6 @@
 
 import React from 'react'
-import { AppBar, Button, createStyles, makeStyles, Table, TableRow, Theme, Toolbar, TableCell, TableCellProps } from '@material-ui/core';
+import { AppBar, Button, createStyles, makeStyles, Table, TableRow, Theme, Toolbar, TableCell, TableCellProps, TableBody } from '@material-ui/core';
 import { Link, RouteComponentProps } from 'react-router-dom';
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
@@ -27,21 +27,23 @@ export const AppToolBar: React.FC<RouteComponentProps> = () => {
     return <AppBar position='static'>
         <Toolbar>
             <Table>
-                <TableRow>
-                    <InvisibleCell width='25%' />
-                    <InvisibleCell width='50%' align='center'>
-                        <Button className={classes.headerText} color='inherit' component={Link} to='/'>
-                            <span>TimeCodeR</span>
-                        </Button>
-                    </InvisibleCell>
-                    <InvisibleCell width='25%' align='right'>
-                        <Button className={classes.headerText} component={Link} to='/about'>
-                            <span >
-                                About
+                <TableBody>
+                    <TableRow>
+                        <InvisibleCell width='25%' />
+                        <InvisibleCell width='50%' align='center'>
+                            <Button className={classes.headerText} color='inherit' component={Link} to='/'>
+                                <span>TimeCodeR</span>
+                            </Button>
+                        </InvisibleCell>
+                        <InvisibleCell width='25%' align='right'>
+                            <Button className={classes.headerText} component={Link} to='/about'>
+                                <span >
+                                    About
                             </span>
-                        </Button>
-                    </ InvisibleCell>
-                </TableRow>
+                            </Button>
+                        </ InvisibleCell>
+                    </TableRow>
+                </TableBody>
             </Table>
         </Toolbar>
     </AppBar>

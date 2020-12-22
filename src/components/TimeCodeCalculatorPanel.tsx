@@ -25,7 +25,7 @@ export const TimeCodeCalculatorPanel = () => {
         <Grid item>
             <span>Frames per second: </span>
             <Select onChange={(event) => setFramesPerSecond(event.target.value as number)} value={framesPerSecond}>
-                {framesPerSecondOptions.map(fps => <MenuItem value={fps}>{fps}</MenuItem>)}
+                {framesPerSecondOptions.map(fps => <MenuItem key={fps} value={fps}>{fps}</MenuItem>)}
             </Select>
         </Grid>
         <Grid item>
