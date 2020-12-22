@@ -42,14 +42,14 @@ jobs:
 
 
     - name: Build tagged Docker image
-      run: docker build . --file Dockerfile --tag oskarfranzen/TimecodeCalculator:${{steps.vars.outputs.tag}}
+      run: docker build . --file Dockerfile --tag oskarfranzen/timecode_calculator:${{steps.vars.outputs.tag}}
 
     - name: Push tagged Docker image
-      run: docker push oskarfranzen/TimecodeCalculator:${{steps.vars.outputs.tag}}
+      run: docker push oskarfranzen/timecode_calculator:${{steps.vars.outputs.tag}}
 
     - name: Build latest Docker image
-      run: docker build . --file Dockerfile --tag oskarfranzen/TimecodeCalculator:latest
+      run: docker build . --file Dockerfile --tag oskarfranzen/timecode_calculator:latest
         
     - name: Push latest Docker image
-      run: docker push oskarfranzen/TimecodeCalculator:latest
+      run: docker push oskarfranzen/timecode_calculator:latest
     
