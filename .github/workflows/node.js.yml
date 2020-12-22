@@ -21,6 +21,9 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
+
+    - name: Login to DockerHub Registry
+      run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
       
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
@@ -30,9 +33,23 @@ jobs:
     - name: Install dependencies 
       run: npm ci
     
-    - name: Build application
-      run: npm run build --if-present
-    
-    - name: Test application
+    - name: Run tests
       run: npm test
+
+    - name: Get the version
+      id: vars
+      run: echo ::set-output name=tag::$(echo ${GITHUB_REF:10})
+
+
+    - name: Build tagged Docker image
+      run: docker build . --file Dockerfile --tag oskarfranzen/TimecodeCalculator:${{steps.vars.outputs.tag}}
+
+    - name: Push tagged Docker image
+      run: docker push oskarfranzen/TimecodeCalculator:${{steps.vars.outputs.tag}}
+
+    - name: Build latest Docker image
+      run: docker build . --file Dockerfile --tag oskarfranzen/TimecodeCalculator:latest
+        
+    - name: Push latest Docker image
+      run: docker push oskarfranzen/TimecodeCalculator:latest
     
