@@ -32,7 +32,7 @@ export const AppToolBar: React.FC<RouteComponentProps> = () => {
                         <InvisibleCell width='25%' />
                         <InvisibleCell width='50%' align='center'>
                             <Button className={classes.headerText} component={Link} to='/'>
-                                <span>TimeCodeR</span>
+                                <span>TimeCoder</span>
                             </Button>
                         </InvisibleCell>
                         <InvisibleCell width='25%' align='right'>
